@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redmi_calculator_clone/calculator_button.dart';
 import 'package:redmi_calculator_clone/calculator_operation_button.dart';
+import 'package:redmi_calculator_clone/current_equation.dart';
 import 'package:redmi_calculator_clone/result_text.dart';
 
 class CalculatorPage extends StatelessWidget {
@@ -13,6 +14,8 @@ class CalculatorPage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            const CurrentEquationRow(equation: "2+5"),
+
             // Result Row
             const ResultText(result: "20"),
 
