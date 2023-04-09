@@ -19,8 +19,6 @@ class CalculatorOperationButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (() {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text("Clicked")));
         Provider.of<CalculatorProvider>(context, listen: false)
             .updateEquation(value ?? "");
       }),
