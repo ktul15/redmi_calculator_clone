@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:redmi_calculator_clone/calculator_button.dart';
 import 'package:redmi_calculator_clone/calculator_operation_button.dart';
+import 'package:redmi_calculator_clone/calculator_provider.dart';
 import 'package:redmi_calculator_clone/current_equation.dart';
 import 'package:redmi_calculator_clone/result_text.dart';
 
@@ -14,7 +16,11 @@ class CalculatorPage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const CurrentEquationRow(equation: "2+5"),
+            Consumer<CalculatorProvider>(builder: (context, value, child) {
+              return CurrentEquationRow(
+                currentEquation: value.currentEquation,
+              );
+            }),
 
             // Result Row
             const ResultText(result: "20"),
@@ -35,6 +41,7 @@ class CalculatorPage extends StatelessWidget {
                         CalculatorOperationButton(iconOnButton: Icons.percent),
                         CalculatorOperationButton(
                           textOnButton: "/",
+                          value: "/",
                         ),
                       ],
                     ),
@@ -45,7 +52,10 @@ class CalculatorPage extends StatelessWidget {
                         Numberbutton(numberOnButton: "7"),
                         Numberbutton(numberOnButton: "8"),
                         Numberbutton(numberOnButton: "9"),
-                        CalculatorOperationButton(iconOnButton: Icons.close),
+                        CalculatorOperationButton(
+                          iconOnButton: Icons.close,
+                          value: "*",
+                        ),
                       ],
                     ),
                   ),
@@ -55,7 +65,8 @@ class CalculatorPage extends StatelessWidget {
                         Numberbutton(numberOnButton: "4"),
                         Numberbutton(numberOnButton: "5"),
                         Numberbutton(numberOnButton: "6"),
-                        CalculatorOperationButton(iconOnButton: Icons.remove),
+                        CalculatorOperationButton(
+                            iconOnButton: Icons.remove, value: "-"),
                       ],
                     ),
                   ),
@@ -65,7 +76,10 @@ class CalculatorPage extends StatelessWidget {
                         Numberbutton(numberOnButton: "1"),
                         Numberbutton(numberOnButton: "2"),
                         Numberbutton(numberOnButton: "3"),
-                        CalculatorOperationButton(iconOnButton: Icons.add),
+                        CalculatorOperationButton(
+                          iconOnButton: Icons.add,
+                          value: "+",
+                        ),
                       ],
                     ),
                   ),

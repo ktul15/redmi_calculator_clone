@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 
 class CalculatorOperationButton extends StatelessWidget {
   const CalculatorOperationButton(
-      {super.key, this.textOnButton, this.iconOnButton, this.isCircular});
+      {super.key,
+      this.textOnButton,
+      this.iconOnButton,
+      this.isCircular,
+      this.value});
 
   final String? textOnButton;
   final IconData? iconOnButton;
   final bool? isCircular;
+  final String? value;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: (() {
         ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(content: Text("Clicked")));
