@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:redmi_calculator_clone/calculator_provider.dart';
 
 class CalculatorOperationButton extends StatelessWidget {
   const CalculatorOperationButton(
@@ -19,6 +21,8 @@ class CalculatorOperationButton extends StatelessWidget {
       onTap: (() {
         ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(content: Text("Clicked")));
+        Provider.of<CalculatorProvider>(context, listen: false)
+            .updateEquation(value ?? "");
       }),
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.25,

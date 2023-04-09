@@ -9,7 +9,6 @@ class CurrentEquationRow extends StatelessWidget {
   Widget build(BuildContext context) {
     debugPrint("current Equation: $currentEquation");
     return Container(
-        color: Colors.red,
         height: MediaQuery.of(context).size.height * 0.10,
         width: double.infinity,
         alignment: Alignment.centerRight,

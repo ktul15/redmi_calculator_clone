@@ -38,7 +38,10 @@ class CalculatorPage extends StatelessWidget {
                         CalculatorOperationButton(
                           iconOnButton: Icons.backspace_outlined,
                         ),
-                        CalculatorOperationButton(iconOnButton: Icons.percent),
+                        CalculatorOperationButton(
+                          iconOnButton: Icons.percent,
+                          value: "%",
+                        ),
                         CalculatorOperationButton(
                           textOnButton: "/",
                           value: "/",
@@ -87,10 +90,13 @@ class CalculatorPage extends StatelessWidget {
                     child: Row(
                       children: const [
                         CalculatorOperationButton(
-                            iconOnButton: Icons.change_circle),
+                            iconOnButton: Icons.change_circle_outlined),
                         Numberbutton(numberOnButton: "0"),
                         Numberbutton(numberOnButton: "."),
-                        CalculatorOperationButton(iconOnButton: Icons.add),
+                        CalculatorOperationButton(
+                          textOnButton: "=",
+                          isCircular: true,
+                        ),
                       ],
                     ),
                   ),
