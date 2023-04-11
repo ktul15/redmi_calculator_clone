@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => CalculatorProvider(),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Calculator',
         theme: ThemeData(
           useMaterial3: true,
           primarySwatch: Colors.blue,

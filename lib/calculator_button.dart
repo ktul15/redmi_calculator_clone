@@ -11,9 +11,6 @@ class Numberbutton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        ScaffoldMessenger.of(context).removeCurrentSnackBar();
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("Clicked $numberOnButton")));
         Provider.of<CalculatorProvider>(context, listen: false)
             .updateEquation(numberOnButton);
       },
