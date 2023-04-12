@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CurrentEquationRow extends StatelessWidget {
-  const CurrentEquationRow({super.key, required this.currentEquation});
+  const CurrentEquationRow(
+      {super.key,
+      required this.currentEquation,
+      required this.isEqualsClicked});
 
   final String currentEquation;
+  final bool isEqualsClicked;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,7 @@ class CurrentEquationRow extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Text(
           currentEquation,
-          style: const TextStyle(fontSize: 24),
+          style: TextStyle(fontSize: isEqualsClicked ? 24 : 32),
         ));
   }
 }

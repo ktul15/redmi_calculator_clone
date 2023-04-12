@@ -16,16 +16,21 @@ class CalculatorPage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Consumer<CalculatorProvider>(builder: (context, value, child) {
+            Consumer<CalculatorProvider>(
+                builder: (context, calculatorProvider, child) {
               return CurrentEquationRow(
-                currentEquation: value.currentEquation,
+                currentEquation: calculatorProvider.currentEquation,
+                isEqualsClicked: calculatorProvider.isEqualsClicked,
               );
             }),
 
             // Result Row
             Consumer<CalculatorProvider>(
               builder: ((context, calculatorProvider, child) {
-                return ResultText(result: calculatorProvider.answer);
+                return ResultText(
+                  result: calculatorProvider.answer,
+                  isEqualsClicked: calculatorProvider.isEqualsClicked,
+                );
               }),
             ),
 

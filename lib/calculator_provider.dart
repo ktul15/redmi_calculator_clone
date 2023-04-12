@@ -5,14 +5,17 @@ class CalculatorProvider extends ChangeNotifier {
   String _currentEquation = "";
   String get currentEquation => _currentEquation;
 
-  String _previousEquation = "";
-  String get previousEquation => _previousEquation;
+  final List<String> _previousEquations = [];
+  List<String> get previousEquation => _previousEquations;
 
-  String _previousAnswer = "";
-  String get previousAnswer => _previousAnswer;
+  final List<String> _previousAnswers = [];
+  List<String> get previousAnswer => _previousAnswers;
 
   String _answer = "";
   String get answer => _answer;
+
+  bool _isEqualsClicked = false;
+  bool get isEqualsClicked => _isEqualsClicked;
 
   final _listOfNumbers = [
     "0",
@@ -34,6 +37,11 @@ class CalculatorProvider extends ChangeNotifier {
     debugPrint("inside update");
     bool isNewCharacterNumber = _listOfNumbers.contains(newCharacter);
     bool isNewCharacterOperator = _listOfOperations.contains(newCharacter);
+
+    if (isEqualsClicked == true) {
+      _isEqualsClicked = false;
+      notifyListeners();
+    }
 
     // If number is clicked, then add it in the equation
     if (isNewCharacterNumber) {
@@ -73,7 +81,10 @@ class CalculatorProvider extends ChangeNotifier {
   }
 
   onEqualsClicked() {
+    _isEqualsClicked = true;
     calculateEquation();
+    _previousEquations.add(currentEquation);
+    _currentEquation = answer;
     notifyListeners();
   }
 
@@ -87,8 +98,8 @@ class CalculatorProvider extends ChangeNotifier {
   }
 
   onClearClicked() {
-    _previousAnswer = answer;
-    _previousEquation = currentEquation;
+    _previousAnswers.add(answer);
+    _previousEquations.add(currentEquation);
     _currentEquation = "";
     _answer = "";
     notifyListeners();

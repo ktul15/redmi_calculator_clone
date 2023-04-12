@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ResultText extends StatelessWidget {
-  const ResultText({super.key, required this.result});
+  const ResultText(
+      {super.key, required this.result, required this.isEqualsClicked});
 
   final String result;
+  final bool isEqualsClicked;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class ResultText extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Text(
         result,
-        style: const TextStyle(fontSize: 24),
+        style: TextStyle(fontSize: isEqualsClicked ? 32 : 24),
       ),
     );
   }
